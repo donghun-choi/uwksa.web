@@ -65,7 +65,7 @@ export function Footer({ language }: FooterProps) {
               <h3 className="text-slate-900 dark:text-slate-100 mb-4">{text.connect}</h3>
               <div className="flex gap-3">
                 <a
-                  href="https://www.instagram.com/uwksa"
+                  href="https://www.instagram.com/uwaterloo_ksa"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Instagram"

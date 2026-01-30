@@ -56,7 +56,7 @@ export function ContactPage({ language }: ContactPageProps) {
   ];
 
   const socialLinks = [
-    { icon: Instagram, href: 'https://www.instagram.com/uwksa', label: 'Instagram', handle: '@uwksa' },
+    { icon: Instagram, href: 'https://www.instagram.com/uwaterloo_ksa', label: 'Instagram', handle: '@uwaterloo_ksa' },
     { icon: Facebook, href: '#', label: 'Facebook', handle: 'UWKSA' },
   ];
 

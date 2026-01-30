@@ -223,7 +223,7 @@ export function HomePage({ language }: HomePageProps) {
             </div>
             <h2 className="text-slate-900 mb-6">{text.instagram}</h2>
             <a
-              href="https://www.instagram.com/uwksa"
+              href="https://www.instagram.com/uwaterloo_ksa"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-8 py-3 bg-slate-900 text-white rounded-full hover:bg-slate-800 transition-colors"

@@ -105,12 +105,12 @@ export function GalleryPage({ language }: GalleryPageProps) {
               : 'Follow UWKSA on Instagram for the latest updates and photos!'}
           </p>
           <a
-            href="https://www.instagram.com/uwksa"
+            href="https://www.instagram.com/uwaterloo_ksa"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block px-8 py-3 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors"
           >
-            @uwksa
+            @uwaterloo_ksa
           </a>
         </div>
       </section>
