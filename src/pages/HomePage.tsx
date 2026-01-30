@@ -16,9 +16,9 @@ export function HomePage({ language }: HomePageProps) {
       joinButton: '멤버십 가입하기',
       eventsTitle: '주요 이벤트',
       events: [
-        { title: 'EOT', description: '사교 행사. EOT 공지사항을 확인해 주세요!' },
-        { title: '멘토링 나이트', description: '2월 4일 멘토링 나이트에 참석해 주세요!' },
-        { title: '조회', description: '조회 공지사항을 확인해 주세요!' },
+        { title: '발렌타인 데이 (2/13)', description: '위치: 미정 · 시간: 미정' },
+        { title: '삼일절 기념 (3/1)', description: '위치: CMH 67th floor · 시간: 미정' },
+        { title: 'W26 EOT', description: '위치: 미정 · 시간: 미정 · 날짜: 미정' },
       ],
       newsTitle: '소식',
       news: [
@@ -36,9 +36,9 @@ export function HomePage({ language }: HomePageProps) {
       joinButton: 'Join Membership',
       eventsTitle: 'Main Events',
       events: [
-        { title: 'EOT', description: 'Social event. Please check the EOT announcement!' },
-        { title: 'Mentoring Night', description: 'Please join us for Mentoring Night on Feb 4th!' },
-        { title: 'Assembly', description: 'Please check the Assembly announcement!' },
+        { title: 'Valentine\'s Day (2/13)', description: 'Location: TBD · Time: TBD' },
+        { title: 'March 1st Independence Day (3/1)', description: 'Location: CMH 67th floor · Time: TBD' },
+        { title: 'W26 EOT', description: 'Location: TBD · Time: TBD · Date: TBD' },
       ],
       newsTitle: 'News',
       news: [
