@@ -13,7 +13,7 @@ export function Footer({ language }: FooterProps) {
     <footer className="py-16 bg-[#FDB813]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-slate-900 mb-6">{text.contactTitle}</h2>
+          <h2 className="text-slate-900 mb-6 font-bold" style={{ fontSize: "2rem" }}>{text.contactTitle}</h2>
           <div className="flex justify-center gap-4 flex-wrap mb-8">
             <a
               href="https://www.instagram.com/uwaterloo_ksa"

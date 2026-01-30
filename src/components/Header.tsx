@@ -29,7 +29,7 @@ export function Header({ language, onLanguageToggle }: HeaderProps) {
         <div className="flex items-center justify-between h-16">
           {/* Logo - Clickable */}
           <a href="#/" className="flex items-center">
-            <span className="text-[#FDB813] tracking-wider hover:opacity-80 transition-opacity text-xl font-bold">UWKSA</span>
+            <span className="text-[#FDB813] tracking-wider hover:opacity-80 transition-opacity font-black" style={{ fontSize: "1.75rem" }}>UWKSA</span>
           </a>
 
           {/* Desktop Navigation */}
