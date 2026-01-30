@@ -5,7 +5,6 @@ import { ThemeToggle } from './components/ThemeToggle';
 import { CursorMascot } from './components/CursorMascot';
 import { HomePage } from './pages/HomePage';
 import { MembershipPage } from './pages/MembershipPage';
-import { AboutPage } from './pages/AboutPage';
 import { EventsPage } from './pages/EventsPage';
 import { GalleryPage } from './pages/GalleryPage';
 import { ContactPage } from './pages/ContactPage';
@@ -48,8 +47,6 @@ export default function App() {
         return <HomePage language={language} />;
       case '/membership':
         return <MembershipPage language={language} />;
-      case '/about':
-        return <AboutPage language={language} />;
       case '/events':
         return <EventsPage language={language} />;
       case '/gallery':

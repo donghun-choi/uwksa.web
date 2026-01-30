@@ -9,22 +9,16 @@ interface HeaderProps {
 export function Header({ language, onLanguageToggle }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const navItems = language === 'ko' 
+  const navItems = language === 'ko'
     ? [
-        { label: 'Home', href: '#/' },
-        { label: '소개', href: '#/about' },
         { label: '멤버십', href: '#/membership' },
         { label: '이벤트', href: '#/events' },
         { label: '갤러리', href: '#/gallery' },
-        { label: '소식', href: '#/contact' },
       ]
     : [
-        { label: 'Home', href: '#/' },
-        { label: 'About', href: '#/about' },
         { label: 'Membership', href: '#/membership' },
         { label: 'Events', href: '#/events' },
         { label: 'Gallery', href: '#/gallery' },
-        { label: 'News', href: '#/contact' },
       ];
 
   return (

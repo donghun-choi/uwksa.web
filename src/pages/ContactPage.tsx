@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Mail, Instagram, Facebook, Send } from 'lucide-react';
+import { Mail, Instagram, Send, Music, MessageCircle } from 'lucide-react';
 import { useState } from 'react';
 
 interface ContactPageProps {
@@ -17,9 +17,7 @@ export function ContactPage({ language }: ContactPageProps) {
       contactTitle: '문의하기',
       contactDesc: '질문이나 제안사항이 있으시면 언제든지 연락주세요.',
       emailLabel: '이메일',
-      generalEmail: '일반 문의',
-      eventsEmail: '이벤트 문의',
-      membershipEmail: '멤버십 문의',
+      generalEmail: '이메일',
       socialTitle: '소셜 미디어',
       socialDesc: 'UWKSA를 팔로우하고 최신 소식을 받아보세요',
       newsletterTitle: '뉴스레터 구독',
@@ -34,9 +32,7 @@ export function ContactPage({ language }: ContactPageProps) {
       contactTitle: 'Contact Us',
       contactDesc: 'Have questions or suggestions? Feel free to reach out to us.',
       emailLabel: 'Email',
-      generalEmail: 'General Inquiries',
-      eventsEmail: 'Events',
-      membershipEmail: 'Membership',
+      generalEmail: 'Email',
       socialTitle: 'Social Media',
       socialDesc: 'Follow UWKSA for the latest updates',
       newsletterTitle: 'Newsletter Subscription',
@@ -50,14 +46,13 @@ export function ContactPage({ language }: ContactPageProps) {
   const text = content[language];
 
   const contactEmails = [
-    { label: text.generalEmail, email: 'contact@uwksa.ca' },
-    { label: text.eventsEmail, email: 'events@uwksa.ca' },
-    { label: text.membershipEmail, email: 'membership@uwksa.ca' },
+    { label: text.generalEmail, email: 'uofwaterlooksa@gmail.com' },
   ];
 
   const socialLinks = [
     { icon: Instagram, href: 'https://www.instagram.com/uwaterloo_ksa', label: 'Instagram', handle: '@uwaterloo_ksa' },
-    { icon: Facebook, href: '#', label: 'Facebook', handle: 'UWKSA' },
+    { icon: Music, href: 'https://www.tiktok.com/@uwaterloo_ksa', label: 'TikTok', handle: '@uwaterloo_ksa' },
+    { icon: MessageCircle, href: 'https://discord.com/invite/9VZ6AGYY94', label: 'Discord', handle: 'UWKSA' },
   ];
 
   const handleSubscribe = (e: React.FormEvent) => {

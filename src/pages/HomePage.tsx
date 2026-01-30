@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Instagram } from 'lucide-react';
+import { TeamSection } from '../components/TeamSection';
 
 interface HomePageProps {
   language: 'en' | 'ko';
@@ -26,14 +26,6 @@ export function HomePage({ language }: HomePageProps) {
         { title: 'EOT 행사가 다가옵니다!', link: 'EOT 행사가 다가옵니다 공지사항 읽기' },
         { title: '멘토링 나이트', link: '멘토링 나이트 공지사항 읽기' },
       ],
-      instagram: 'Instagram',
-      instagramFollow: '팔로우하기',
-      quickLinks: 'Quick Links',
-      about: '소개',
-      eventsLink: '이벤트',
-      membership: '멤버십',
-      newsLink: '소식',
-      connect: 'Connect with Us',
     },
     en: {
       ksa: 'KSA',
@@ -54,14 +46,6 @@ export function HomePage({ language }: HomePageProps) {
         { title: 'EOT event is coming up!', link: 'Read the EOT event announcement' },
         { title: 'Mentoring Night', link: 'Read the Mentoring Night announcement' },
       ],
-      instagram: 'Instagram',
-      instagramFollow: 'Follow Us',
-      quickLinks: 'Quick Links',
-      about: 'About',
-      eventsLink: 'Events',
-      membership: 'Membership',
-      newsLink: 'News',
-      connect: 'Connect with Us',
     },
   };
 
@@ -162,6 +146,9 @@ export function HomePage({ language }: HomePageProps) {
         </div>
       </section>
 
+      {/* Team Section */}
+      <TeamSection language={language} />
+
       {/* Events Section */}
       <section className="py-20 bg-white dark:bg-[#0a0a0a]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -210,26 +197,6 @@ export function HomePage({ language }: HomePageProps) {
                 </motion.div>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Instagram CTA */}
-      <section className="py-16 bg-[#FDB813]">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="max-w-3xl mx-auto">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-slate-900 rounded-full mb-6">
-              <Instagram className="text-white" size={32} />
-            </div>
-            <h2 className="text-slate-900 mb-6">{text.instagram}</h2>
-            <a
-              href="https://www.instagram.com/uwaterloo_ksa"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-8 py-3 bg-slate-900 text-white rounded-full hover:bg-slate-800 transition-colors"
-            >
-              {text.instagramFollow}
-            </a>
           </div>
         </div>
       </section>
