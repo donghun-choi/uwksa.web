@@ -11,7 +11,7 @@ export function Membership({ language }: MembershipProps) {
     ko: {
       badge: '멤버십 혜택',
       title: '멤버십 안내',
-      description: 'UWKSA 멤버십에 가입하시면 다양한 혜택과 함께 활발한 한인 커뮤니티의 일원이 되실 수 있습니다.',
+      description: '멤버십에 가입하고 키치너 & 워털루 지역 가게들에서 제공하는 할인 혜택을 받으세요! UWKSA 멤버가 되어 다양한 이벤트와 커뮤니티에 참여하세요.',
       cta: '멤버십 가입하기',
       benefits: [
         '제휴 식당 및 업체에서 10% 할인',

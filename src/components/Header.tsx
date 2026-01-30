@@ -11,11 +11,13 @@ export function Header({ language, onLanguageToggle }: HeaderProps) {
 
   const navItems = language === 'ko'
     ? [
+        { label: 'Home', href: '#/' },
         { label: '멤버십', href: '#/membership' },
         { label: '이벤트', href: '#/events' },
         { label: '갤러리', href: '#/gallery' },
       ]
     : [
+        { label: 'Home', href: '#/' },
         { label: 'Membership', href: '#/membership' },
         { label: 'Events', href: '#/events' },
         { label: 'Gallery', href: '#/gallery' },
@@ -27,7 +29,7 @@ export function Header({ language, onLanguageToggle }: HeaderProps) {
         <div className="flex items-center justify-between h-16">
           {/* Logo - Clickable */}
           <a href="#/" className="flex items-center">
-            <span className="text-[#FDB813] tracking-wider hover:opacity-80 transition-opacity">UWKSA</span>
+            <span className="text-[#FDB813] tracking-wider hover:opacity-80 transition-opacity text-xl font-bold">UWKSA</span>
           </a>
 
           {/* Desktop Navigation */}

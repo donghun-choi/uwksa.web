@@ -12,7 +12,7 @@ export function MembershipPage({ language }: MembershipPageProps) {
       title: 'Membership 안내',
       subtitle: '멤버십 혜택 및 제휴 업체',
       benefitsTitle: '멤버십 혜택 (Korean)',
-      benefitsDesc: 'UWKSA 멤버십에 가입하시면 다양한 혜택과 함께 활발한 한인 커뮤니티의 일원이 되실 수 있습니다.',
+      benefitsDesc: '멤버십에 가입하고 키치너 & 워털루 지역 가게들에서 제공하는 할인 혜택을 받으세요! UWKSA 멤버가 되어 다양한 이벤트와 커뮤니티에 참여하세요.',
       benefits: [
         'Who: UWKSA members',
         'Perk: 10% off at contracted restaurants (some exclusions/terms may apply)',

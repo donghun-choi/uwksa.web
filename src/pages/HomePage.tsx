@@ -9,10 +9,10 @@ export function HomePage({ language }: HomePageProps) {
   const content = {
     ko: {
       ksa: 'KSA',
-      mainTitle: 'UWKSA는 워터루 대학교 한인 학생회로, 학생들이 한국 문화를 공유하고\n친목을 다지며, 다양한 이벤트와 활동을 즐길 수 있는\n공간을 제공하는 단체입니다.',
+      mainTitle: 'UWKSA는 워털루 대학교 한인 학생회로, 학생들이 한국 문화를 공유하고\n친목을 다지며, 다양한 이벤트와 활동을 즐길 수 있는\n공간을 제공하는 단체입니다.',
       joinCTA: 'Join Now & Get a',
       memberDiscount: 'Member Discount',
-      joinDescription: '멤버십에 가입하고 워터루 지역 한식당에서 제공하는\n할인 혜택을 받으세요! UWKSA 멤버가 되어 다양한\n이벤트와 커뮤니티에 참여하세요.',
+      joinDescription: '멤버십에 가입하고 워털루 지역 한식당에서 제공하는\n할인 혜택을 받으세요! UWKSA 멤버가 되어 다양한\n이벤트와 커뮤니티에 참여하세요.',
       joinButton: '멤버십 가입하기',
       eventsTitle: '주요 이벤트',
       events: [
