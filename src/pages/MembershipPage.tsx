@@ -1,10 +1,76 @@
 import { motion } from 'motion/react';
-import { Check, Star, ExternalLink } from 'lucide-react';
+import { Check, Star, ExternalLink, MapPin } from 'lucide-react';
 import mascotWave from 'figma:asset/2f7119d4264719c8469dedaf506e913cc3affe24.png';
 
 interface MembershipPageProps {
   language: 'en' | 'ko';
 }
+
+const partnerRestaurants = [
+  {
+    name: 'BBQ Village',
+    address: '140 University Ave W A1',
+    mapUrl: 'https://maps.app.goo.gl/gDdWomSnAULqRdge7',
+    hours: '3pm - 12am',
+    discount: '10%',
+  },
+  {
+    name: 'Izna Poke Plus',
+    address: '170 University Ave W #6B',
+    mapUrl: 'https://maps.app.goo.gl/cHFjUk3BteN5Y8Ar8',
+    hours: '11am - 9pm',
+    discount: '10%',
+  },
+  {
+    name: 'K-GOOD STORE MART',
+    address: '363 King St N',
+    mapUrl: 'https://maps.app.goo.gl/FndBQ2D3YvNg4UtSA',
+    hours: '8am - 12am',
+    discount: '10%',
+  },
+  {
+    name: 'Kim\'s Kitchen',
+    address: '258 King St N #2',
+    mapUrl: 'https://maps.app.goo.gl/tABRcTdw8AQDssHy7',
+    hours: 'TBD',
+    discount: 'Cash 10%, Card 5%',
+  },
+  {
+    name: 'Manon Bakery',
+    address: '258A Sunview St',
+    mapUrl: 'https://maps.app.goo.gl/sXYKcMzXfesQGCbb9',
+    hours: '10am - 7pm (Mon closed)',
+    discount: '5% under $30, 10% over $30',
+  },
+  {
+    name: 'Sweet Dreams Teashop',
+    address: '170 University Ave W #14',
+    mapUrl: 'https://maps.app.goo.gl/vRBHL34hQHaEM6VcA',
+    hours: 'TBD',
+    discount: '10% (All food & drinks)',
+  },
+  {
+    name: 'The Bingsu Cafe',
+    address: '150 University Ave W #2',
+    mapUrl: 'https://maps.app.goo.gl/n3Ef8zJgosZh2Zra8',
+    hours: 'TBD',
+    discount: '10%',
+  },
+  {
+    name: 'Katsuya',
+    address: '23 King St N',
+    mapUrl: 'https://maps.app.goo.gl/HNipkiUPheoa58Zg9',
+    hours: '12-10pm (Sun 12-9pm)',
+    discount: '10%',
+  },
+  {
+    name: 'Chicken Plus',
+    address: '572 King St N',
+    mapUrl: 'https://maps.app.goo.gl/RzcQzbjC82s4iBJeA',
+    hours: 'TBD',
+    discount: 'Free side with small chicken (Exec 30%)',
+  },
+];
 
 export function MembershipPage({ language }: MembershipPageProps) {
   const content = {
@@ -27,18 +93,9 @@ export function MembershipPage({ language }: MembershipPageProps) {
       ],
       enrollTitle: '멤버십 가입',
       enrollButton: '멤버십 가입 (Direct Link)',
-      placesTitle: 'Membership Places - Opening Hours',
+      placesTitle: '제휴 업체',
       placesDesc: '제휴 식당 목록입니다. 운영시간 및 위치 기준은 현 학기를 따릅니다.',
-      restaurants: [
-        { name: 'BBQ', location: 'TBD TBD', hours: '매일 10% 할인' },
-        { name: '본비빔', location: 'TBD TBD', hours: '매일 10% 할인' },
-        { name: 'K Good Store', location: 'TBD TBD', hours: '매일 10% 할인' },
-        { name: 'Luna', location: 'TBD TBD', hours: '매일 10% 할인' },
-        { name: 'Sweet Dreams', location: 'TBD TBD', hours: '매일 10% 할인' },
-        { name: 'Matron Bakery', location: 'TBD TBD', hours: '매일 10% 할인' },
-        { name: 'The Burgal', location: 'TBD TBD', hours: '매일 10% 할인' },
-        { name: 'Katsuya', location: 'TBD TBD', hours: '매일 10% 할인' },
-      ],
+      tableHeaders: { restaurant: '식당', address: '주소', hours: '운영시간', discount: '할인' },
     },
     en: {
       title: 'Membership Information',
@@ -59,18 +116,9 @@ export function MembershipPage({ language }: MembershipPageProps) {
       ],
       enrollTitle: 'Join Membership',
       enrollButton: 'Join Membership (Direct Link)',
-      placesTitle: 'Membership Places - Opening Hours',
+      placesTitle: 'Partner Restaurants',
       placesDesc: 'List of affiliated restaurants. Operating hours and location are based on the current semester.',
-      restaurants: [
-        { name: 'BBQ', location: 'TBD TBD', hours: '10% off daily' },
-        { name: 'BonBibim', location: 'TBD TBD', hours: '10% off daily' },
-        { name: 'K Good Store', location: 'TBD TBD', hours: '10% off daily' },
-        { name: 'Luna', location: 'TBD TBD', hours: '10% off daily' },
-        { name: 'Sweet Dreams', location: 'TBD TBD', hours: '10% off daily' },
-        { name: 'Matron Bakery', location: 'TBD TBD', hours: '10% off daily' },
-        { name: 'The Burgal', location: 'TBD TBD', hours: '10% off daily' },
-        { name: 'Katsuya', location: 'TBD TBD', hours: '10% off daily' },
-      ],
+      tableHeaders: { restaurant: 'Restaurant', address: 'Address', hours: 'Hours', discount: 'Discount' },
     },
   };
 
@@ -163,25 +211,37 @@ export function MembershipPage({ language }: MembershipPageProps) {
 
       {/* Restaurant List */}
       <section className="py-20 bg-white dark:bg-slate-900">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <h2 className="text-yellow-600 dark:text-yellow-400 mb-4 text-center">{text.placesTitle}</h2>
           <p className="text-slate-700 dark:text-slate-300 text-center mb-12">{text.placesDesc}</p>
 
-          <div className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700">
+          <div className="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-700">
             <table className="w-full">
               <thead className="bg-slate-50 dark:bg-slate-800">
                 <tr>
-                  <th className="px-6 py-4 text-left text-slate-900 dark:text-slate-100">{language === 'ko' ? '식당' : 'Restaurant'}</th>
-                  <th className="px-6 py-4 text-left text-slate-900 dark:text-slate-100">{language === 'ko' ? '주소' : 'Location'}</th>
-                  <th className="px-6 py-4 text-left text-slate-900 dark:text-slate-100">{language === 'ko' ? '혜택' : 'Discount'}</th>
+                  <th className="px-4 py-4 text-left text-slate-900 dark:text-slate-100">{text.tableHeaders.restaurant}</th>
+                  <th className="px-4 py-4 text-left text-slate-900 dark:text-slate-100">{text.tableHeaders.address}</th>
+                  <th className="px-4 py-4 text-left text-slate-900 dark:text-slate-100">{text.tableHeaders.hours}</th>
+                  <th className="px-4 py-4 text-left text-slate-900 dark:text-slate-100">{text.tableHeaders.discount}</th>
                 </tr>
               </thead>
               <tbody className="bg-white dark:bg-slate-900 divide-y divide-slate-200 dark:divide-slate-700">
-                {text.restaurants.map((restaurant, index) => (
+                {partnerRestaurants.map((restaurant, index) => (
                   <tr key={index} className="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
-                    <td className="px-6 py-4 text-slate-900 dark:text-slate-100">{restaurant.name}</td>
-                    <td className="px-6 py-4 text-slate-600 dark:text-slate-400">{restaurant.location}</td>
-                    <td className="px-6 py-4 text-slate-600 dark:text-slate-400">{restaurant.hours}</td>
+                    <td className="px-4 py-4 text-slate-900 dark:text-slate-100 font-medium">{restaurant.name}</td>
+                    <td className="px-4 py-4 text-slate-600 dark:text-slate-400">
+                      <a
+                        href={restaurant.mapUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 hover:text-yellow-600 dark:hover:text-yellow-400 transition-colors"
+                      >
+                        <MapPin size={14} className="flex-shrink-0" />
+                        <span className="text-sm">{restaurant.address}</span>
+                      </a>
+                    </td>
+                    <td className="px-4 py-4 text-slate-600 dark:text-slate-400 text-sm">{restaurant.hours}</td>
+                    <td className="px-4 py-4 text-yellow-600 dark:text-yellow-400 font-medium text-sm">{restaurant.discount}</td>
                   </tr>
                 ))}
               </tbody>

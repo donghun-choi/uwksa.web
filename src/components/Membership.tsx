@@ -1,10 +1,21 @@
 import { motion } from 'motion/react';
-import { Check, Star } from 'lucide-react';
-import mascotWave from 'figma:asset/2f7119d4264719c8469dedaf506e913cc3affe24.png';
+import { Check, Star, Store } from 'lucide-react';
 
 interface MembershipProps {
   language: 'en' | 'ko';
 }
+
+const partnerRestaurants = [
+  { name: 'BBQ Village', discount: '10%' },
+  { name: 'Izna Poke Plus', discount: '10%' },
+  { name: 'K-GOOD STORE MART', discount: '10%' },
+  { name: 'Kim\'s Kitchen', discount: 'Cash 10%, Card 5%' },
+  { name: 'Manon Bakery', discount: '5% under $30, 10% over $30' },
+  { name: 'Sweet Dreams Teashop', discount: '10% (All food & drinks)' },
+  { name: 'The Bingsu', discount: '10%' },
+  { name: 'Katsuya', discount: '10%' },
+  { name: 'Chicken Plus', discount: 'Free item with small chicken order (Executives 30% off)' },
+];
 
 export function Membership({ language }: MembershipProps) {
   const content = {
@@ -13,8 +24,8 @@ export function Membership({ language }: MembershipProps) {
       title: '멤버십 안내',
       description: '멤버십에 가입하고 키치너 & 워털루 지역 가게들에서 제공하는 할인 혜택을 받으세요! UWKSA 멤버가 되어 다양한 이벤트와 커뮤니티에 참여하세요.',
       cta: '멤버십 가입하기',
+      partnersTitle: '제휴 업체',
       benefits: [
-        '제휴 식당 및 업체에서 10% 할인',
         'UWKSA 주최 이벤트 우선 참가',
         '한인 커뮤니티 네트워킹 기회',
         '멤버 전용 소셜 이벤트 참가',
@@ -27,8 +38,8 @@ export function Membership({ language }: MembershipProps) {
       title: 'Membership Information',
       description: 'Join UWKSA membership to become part of an active Korean community with various benefits.',
       cta: 'Join Membership',
+      partnersTitle: 'Partner Businesses',
       benefits: [
-        '10% discount at affiliated restaurants and businesses',
         'Priority registration for UWKSA events',
         'Korean community networking opportunities',
         'Access to member-exclusive social events',
@@ -90,7 +101,7 @@ export function Membership({ language }: MembershipProps) {
             </motion.a>
           </motion.div>
 
-          {/* Mascot */}
+          {/* Partner Restaurants */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -98,24 +109,26 @@ export function Membership({ language }: MembershipProps) {
             transition={{ duration: 0.6 }}
             className="relative"
           >
-            <div className="relative bg-gradient-to-br from-yellow-400/20 to-yellow-400/5 rounded-3xl p-12 border border-yellow-400/20">
-              <motion.img
-                src={mascotWave}
-                alt="UWKSA Mascot"
-                className="w-full h-auto max-w-sm mx-auto drop-shadow-2xl"
-                animate={{
-                  rotate: [0, 5, 0, -5, 0],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
-              
-              {/* Decorative elements */}
-              <div className="absolute top-8 right-8 w-20 h-20 bg-yellow-400/10 rounded-full blur-xl" />
-              <div className="absolute bottom-8 left-8 w-32 h-32 bg-yellow-400/10 rounded-full blur-xl" />
+            <div className="relative bg-gradient-to-br from-yellow-400/20 to-yellow-400/5 rounded-3xl p-6 border border-yellow-400/20">
+              <div className="flex items-center gap-2 mb-4">
+                <Store className="text-yellow-400" size={20} />
+                <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">{text.partnersTitle}</h3>
+              </div>
+              <div className="space-y-3">
+                {partnerRestaurants.map((restaurant, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.05, duration: 0.3 }}
+                    className="flex justify-between items-start gap-4 p-3 bg-white/50 dark:bg-slate-800/50 rounded-lg"
+                  >
+                    <span className="font-medium text-slate-900 dark:text-slate-100">{restaurant.name}</span>
+                    <span className="text-sm text-yellow-600 dark:text-yellow-400 text-right whitespace-nowrap">{restaurant.discount}</span>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </motion.div>
         </div>
