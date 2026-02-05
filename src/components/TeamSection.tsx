@@ -7,10 +7,40 @@ import {
   DialogTitle,
   DialogDescription,
 } from './ui/dialog';
-import { executives, teams, type Team } from '../data/teamData';
+import { executives, teams, memberImages, getEnglishName, type Team } from '../data/teamData';
+
+// Import all exec photos
+const execPhotos = import.meta.glob('../assets/exec_pfps/*.{jpeg,jpg,png}', { eager: true, import: 'default' }) as Record<string, string>;
+
+function getMemberImage(name: string): string | undefined {
+  const fileName = memberImages[name];
+  if (!fileName) return undefined;
+  const key = `../assets/exec_pfps/${fileName}`;
+  return execPhotos[key];
+}
 
 interface TeamSectionProps {
   language: 'en' | 'ko';
+}
+
+function MemberPhoto({ name, className, style }: { name: string; className?: string; style?: React.CSSProperties }) {
+  const image = getMemberImage(name);
+  if (image) {
+    return (
+      <img
+        src={image}
+        alt={name}
+        className={`object-cover ${className || ''}`}
+        style={style}
+      />
+    );
+  }
+  return (
+    <div
+      className={`bg-slate-200 dark:bg-slate-700 ${className || ''}`}
+      style={style}
+    />
+  );
 }
 
 export function TeamSection({ language }: TeamSectionProps) {
@@ -78,12 +108,13 @@ export function TeamSection({ language }: TeamSectionProps) {
                 >
                   <Dialog>
                     <DialogTrigger className="p-6 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-[#FDB813]/50 transition-colors text-left w-full cursor-pointer">
-                      <div
-                        className="w-full rounded-lg bg-slate-200 dark:bg-slate-700 mb-4"
+                      <MemberPhoto
+                        name={lead?.name || ''}
+                        className="w-full rounded-lg mb-4"
                         style={{ aspectRatio: "1/1" }}
                       />
                       <h3 className="text-slate-900 dark:text-slate-100 font-semibold mb-1">
-                        {lead?.name} - {text.teamLead}
+                        {lead?.name} - {getEnglishName(lead?.name || '')}
                       </h3>
                       <p className="text-slate-500 dark:text-slate-400 text-sm">
                         {team.name[language]}
@@ -108,12 +139,13 @@ export function TeamSection({ language }: TeamSectionProps) {
                             key={member.name}
                             className="flex flex-col items-center text-center"
                           >
-                            <div
-                              className="w-full rounded-lg bg-slate-100 dark:bg-slate-800 mb-2"
+                            <MemberPhoto
+                              name={member.name}
+                              className="w-full rounded-lg mb-2"
                               style={{ aspectRatio: "1/1", maxWidth: "300px" }}
                             />
                             <p className="text-slate-900 dark:text-slate-100 font-medium text-sm">
-                              {member.name}
+                              {member.name} - {getEnglishName(member.name)}
                             </p>
                             <p className="text-slate-500 dark:text-slate-400 text-xs">
                               {member.role === 'Lead' ? text.lead : text.member}
@@ -141,12 +173,13 @@ export function TeamSection({ language }: TeamSectionProps) {
                 >
                   <Dialog>
                     <DialogTrigger className="p-6 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-[#FDB813]/50 transition-colors text-left w-full cursor-pointer">
-                      <div
-                        className="w-full rounded-lg bg-slate-200 dark:bg-slate-700 mb-4"
+                      <MemberPhoto
+                        name={lead?.name || ''}
+                        className="w-full rounded-lg mb-4"
                         style={{ aspectRatio: "1/1" }}
                       />
                       <h3 className="text-slate-900 dark:text-slate-100 font-semibold mb-1">
-                        {lead?.name} - {text.teamLead}
+                        {lead?.name} - {getEnglishName(lead?.name || '')}
                       </h3>
                       <p className="text-slate-500 dark:text-slate-400 text-sm">
                         {team.name[language]}
@@ -171,12 +204,13 @@ export function TeamSection({ language }: TeamSectionProps) {
                             key={member.name}
                             className="flex flex-col items-center text-center"
                           >
-                            <div
-                              className="w-full rounded-lg bg-slate-100 dark:bg-slate-800 mb-2"
+                            <MemberPhoto
+                              name={member.name}
+                              className="w-full rounded-lg mb-2"
                               style={{ aspectRatio: "1/1", maxWidth: "300px" }}
                             />
                             <p className="text-slate-900 dark:text-slate-100 font-medium text-sm">
-                              {member.name}
+                              {member.name} - {getEnglishName(member.name)}
                             </p>
                             <p className="text-slate-500 dark:text-slate-400 text-xs">
                               {member.role === 'Lead' ? text.lead : text.member}
@@ -199,12 +233,13 @@ export function TeamSection({ language }: TeamSectionProps) {
                 transition={{ delay: 0.4 + index * 0.1 }}
               >
                 <div className="p-6 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-left">
-                  <div
-                    className="w-full rounded-lg bg-slate-200 dark:bg-slate-700 mb-4"
+                  <MemberPhoto
+                    name={exec.name}
+                    className="w-full rounded-lg mb-4"
                     style={{ aspectRatio: "1/1" }}
                   />
                   <h3 className="text-slate-900 dark:text-slate-100 font-semibold mb-1">
-                    {exec.name} - {exec.title[language]}
+                    {exec.name} - {getEnglishName(exec.name)}
                   </h3>
                   <p className="text-slate-500 dark:text-slate-400 text-sm">
                     {exec.title[language]}
