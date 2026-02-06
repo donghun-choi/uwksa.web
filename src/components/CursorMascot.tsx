@@ -1,29 +1,37 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion } from 'motion/react';
 import mascotWave from 'figma:asset/2f7119d4264719c8469dedaf506e913cc3affe24.png';
 
 export function CursorMascot() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
+  const rafRef = useRef<number>();
 
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
+  const handleMouseMove = useCallback((e: MouseEvent) => {
+    if (rafRef.current) return;
+    rafRef.current = requestAnimationFrame(() => {
       setMousePosition({ x: e.clientX, y: e.clientY });
       setIsVisible(true);
-    };
+      rafRef.current = undefined;
+    });
+  }, []);
 
-    const handleMouseLeave = () => {
-      setIsVisible(false);
-    };
+  const handleMouseLeave = useCallback(() => {
+    setIsVisible(false);
+  }, []);
 
+  useEffect(() => {
     window.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseleave', handleMouseLeave);
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+      }
     };
-  }, []);
+  }, [handleMouseMove, handleMouseLeave]);
 
   if (!isVisible) return null;
 

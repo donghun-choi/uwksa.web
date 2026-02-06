@@ -25,7 +25,7 @@ export function EventsPage({ language }: EventsPageProps) {
           title: '삼일절 기념',
           location: 'CMH 67th floor',
           time: '미정',
-          description: '시원이형 태극기 들고 삼일절 기념',
+          description: '시원이형 태극기 들고 삼일절 기념 링로드 러닝',
           color: 'from-blue-500/20 to-blue-600/10',
         },
         {

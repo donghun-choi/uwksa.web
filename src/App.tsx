@@ -1,26 +1,30 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
+import { AppProvider, useLanguage, useTheme } from './contexts/AppContext';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { ThemeToggle } from './components/ThemeToggle';
 import { CursorMascot } from './components/CursorMascot';
-import { HomePage } from './pages/HomePage';
-import { MembershipPage } from './pages/MembershipPage';
-import { EventsPage } from './pages/EventsPage';
-import { GalleryPage } from './pages/GalleryPage';
-import { ContactPage } from './pages/ContactPage';
 
-export default function App() {
-  const [language, setLanguage] = useState<'en' | 'ko'>('ko');
-  const [isDark, setIsDark] = useState(true);
+// Lazy load pages for code splitting
+const HomePage = lazy(() => import('./pages/HomePage').then(m => ({ default: m.HomePage })));
+const MembershipPage = lazy(() => import('./pages/MembershipPage').then(m => ({ default: m.MembershipPage })));
+const EventsPage = lazy(() => import('./pages/EventsPage').then(m => ({ default: m.EventsPage })));
+const GalleryPage = lazy(() => import('./pages/GalleryPage').then(m => ({ default: m.GalleryPage })));
+const ContactPage = lazy(() => import('./pages/ContactPage').then(m => ({ default: m.ContactPage })));
+
+// Loading fallback component
+function PageLoading() {
+  return (
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#FDB813]"></div>
+    </div>
+  );
+}
+
+function AppContent() {
+  const { language, toggleLanguage } = useLanguage();
+  const { isDark, toggleTheme } = useTheme();
   const [currentPage, setCurrentPage] = useState('/');
-
-  useEffect(() => {
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [isDark]);
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -32,14 +36,6 @@ export default function App() {
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
-
-  const toggleLanguage = () => {
-    setLanguage(prev => prev === 'ko' ? 'en' : 'ko');
-  };
-
-  const toggleTheme = () => {
-    setIsDark(prev => !prev);
-  };
 
   const renderPage = () => {
     switch (currentPage) {
@@ -63,10 +59,20 @@ export default function App() {
       <CursorMascot />
       <Header language={language} onLanguageToggle={toggleLanguage} />
       <main>
-        {renderPage()}
+        <Suspense fallback={<PageLoading />}>
+          {renderPage()}
+        </Suspense>
       </main>
       <Footer language={language} />
       <ThemeToggle isDark={isDark} onToggle={toggleTheme} />
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <AppProvider>
+      <AppContent />
+    </AppProvider>
   );
 }

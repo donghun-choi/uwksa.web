@@ -24,12 +24,18 @@ export const memberImages: Record<string, string> = {
   '김지율': 'event_jack.jpeg',
   '임승권': 'event_seungkwon.jpeg',
   '최윤서': 'event_viviana.jpeg',
+  '김태윤': 'event_taeyun.jpeg',
+  '장호준': 'event_joey.jpeg',
+  '정인하': 'event_roy.jpeg',
+  '유주연': 'event_jooyeon.jpeg',
   // Marketing Team
   '추승연': 'marketing_seungyeon.jpg',
   '안소현': 'marketing_sohyun.png',
   '배서윤': 'marketing_lydia.jpeg',
   '하윤진': 'marketing_yoonjin.png',
   '김지헌': 'marketing_jihun.jpeg',
+  '김미가': 'marketing_miga.jpeg',
+  '최정미': 'marketing_rayna.jpeg',
   // Tech Team
   '이건희': 'tech_kunhee.jpg',
   '최동훈': 'tech_donghun.jpeg',
@@ -72,6 +78,7 @@ export const memberEnglishNames: Record<string, string> = {
   '김관식': 'Kwansik Kim',
   '한수아': 'Avery Han',
   '추승연': 'Seungyeon Choo',
+  '최정미': 'Rayna Cui',
 };
 
 export function getEnglishName(name: string): string {
@@ -114,7 +121,7 @@ export const teams: Team[] = [
       { name: '신동호', role: 'Member' },
       { name: '김지헌', role: 'Member' },
       { name: 'Hunter Kim', role: 'Member' },
-      { name: 'Rayna Cui', role: 'Member' },
+      { name: '최정미', role: 'Member' },
     ],
   },
   {

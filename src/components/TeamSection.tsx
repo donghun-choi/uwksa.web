@@ -52,6 +52,7 @@ export function TeamSection({ language }: TeamSectionProps) {
         lead: '팀 리드',
         member: '팀원',
         memberCount: (n: number) => `${n}명`,
+        seeMore: '전체 팀 보기 →',
       }
     : {
         sectionTitle: 'Our Team',
@@ -60,6 +61,7 @@ export function TeamSection({ language }: TeamSectionProps) {
         lead: 'Team Lead',
         member: 'Member',
         memberCount: (n: number) => `${n} members`,
+        seeMore: 'See all members →',
       };
 
   const getLead = (team: Team) => team.members.find((m) => m.role === 'Lead');
@@ -107,7 +109,7 @@ export function TeamSection({ language }: TeamSectionProps) {
                   transition={{ delay: index * 0.1 }}
                 >
                   <Dialog>
-                    <DialogTrigger className="p-6 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-[#FDB813]/50 transition-colors text-left w-full cursor-pointer">
+                    <DialogTrigger className="p-6 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-[#FDB813]/50 transition-colors text-left w-full cursor-pointer group">
                       <MemberPhoto
                         name={lead?.name || ''}
                         className="w-full rounded-lg mb-4"
@@ -116,8 +118,11 @@ export function TeamSection({ language }: TeamSectionProps) {
                       <h3 className="text-slate-900 dark:text-slate-100 font-semibold mb-1">
                         {lead?.name} - {getEnglishName(lead?.name || '')}
                       </h3>
-                      <p className="text-slate-500 dark:text-slate-400 text-sm">
+                      <p className="text-slate-500 dark:text-slate-400 text-sm mb-2">
                         {team.name[language]}
+                      </p>
+                      <p className="text-[#FDB813] text-sm font-medium group-hover:underline">
+                        {text.seeMore}
                       </p>
                     </DialogTrigger>
 
@@ -172,7 +177,7 @@ export function TeamSection({ language }: TeamSectionProps) {
                   transition={{ delay: 0.3 }}
                 >
                   <Dialog>
-                    <DialogTrigger className="p-6 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-[#FDB813]/50 transition-colors text-left w-full cursor-pointer">
+                    <DialogTrigger className="p-6 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-[#FDB813]/50 transition-colors text-left w-full cursor-pointer group">
                       <MemberPhoto
                         name={lead?.name || ''}
                         className="w-full rounded-lg mb-4"
@@ -181,8 +186,11 @@ export function TeamSection({ language }: TeamSectionProps) {
                       <h3 className="text-slate-900 dark:text-slate-100 font-semibold mb-1">
                         {lead?.name} - {getEnglishName(lead?.name || '')}
                       </h3>
-                      <p className="text-slate-500 dark:text-slate-400 text-sm">
+                      <p className="text-slate-500 dark:text-slate-400 text-sm mb-2">
                         {team.name[language]}
+                      </p>
+                      <p className="text-[#FDB813] text-sm font-medium group-hover:underline">
+                        {text.seeMore}
                       </p>
                     </DialogTrigger>
 

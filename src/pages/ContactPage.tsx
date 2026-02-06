@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
-import { Mail, Instagram, Send, Music, MessageCircle } from 'lucide-react';
-import { useState } from 'react';
+import { Mail, Send } from 'lucide-react';
+import { useState, useRef, useEffect } from 'react';
+import { socialLinks, CONTACT_EMAIL } from '../data/socialLinks';
 
 interface ContactPageProps {
   language: 'en' | 'ko';
@@ -9,6 +10,16 @@ interface ContactPageProps {
 export function ContactPage({ language }: ContactPageProps) {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
+  const timeoutRef = useRef<number>();
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
 
   const content = {
     ko: {
@@ -46,20 +57,20 @@ export function ContactPage({ language }: ContactPageProps) {
   const text = content[language];
 
   const contactEmails = [
-    { label: text.generalEmail, email: 'uofwaterlooksa@gmail.com' },
+    { label: text.generalEmail, email: CONTACT_EMAIL },
   ];
 
-  const socialLinks = [
-    { icon: Instagram, href: 'https://www.instagram.com/uwaterloo_ksa', label: 'Instagram', handle: '@uwaterloo_ksa' },
-    { icon: Music, href: 'https://www.tiktok.com/@uwaterloo_ksa', label: 'TikTok', handle: '@uwaterloo_ksa' },
-    { icon: MessageCircle, href: 'https://discord.com/invite/9VZ6AGYY94', label: 'Discord', handle: 'UWKSA' },
-  ];
+  // Filter out email from social links (shown separately)
+  const displaySocialLinks = socialLinks.filter(link => !link.href.startsWith('mailto:'));
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
     if (email) {
       setSubscribed(true);
-      setTimeout(() => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      timeoutRef.current = window.setTimeout(() => {
         setEmail('');
         setSubscribed(false);
       }, 3000);
@@ -117,12 +128,13 @@ export function ContactPage({ language }: ContactPageProps) {
               <p className="text-slate-700 dark:text-slate-300 mb-6">{text.socialDesc}</p>
 
               <div className="flex gap-4">
-                {socialLinks.map((social, index) => (
+                {displaySocialLinks.map((social) => (
                   <a
-                    key={index}
+                    key={social.label}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={social.label}
                     className="flex items-center gap-3 px-6 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-yellow-400/50 transition-all"
                   >
                     <social.icon className="text-yellow-400" size={24} />
@@ -146,17 +158,20 @@ export function ContactPage({ language }: ContactPageProps) {
 
                 <form onSubmit={handleSubscribe} className="space-y-4">
                   <div>
-                    <label className="block text-slate-700 dark:text-slate-300 mb-2">
+                    <label htmlFor="newsletter-email" className="block text-slate-700 dark:text-slate-300 mb-2">
                       {text.emailLabel}
                     </label>
                     <input
+                      id="newsletter-email"
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder={text.emailPlaceholder}
                       required
+                      aria-describedby="newsletter-hint"
                       className="w-full px-4 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
                     />
+                    <span id="newsletter-hint" className="sr-only">{text.emailPlaceholder}</span>
                   </div>
 
                   <button
