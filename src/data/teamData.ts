@@ -28,6 +28,7 @@ export const memberImages: Record<string, string> = {
   '장호준': 'event_joey.jpeg',
   '정인하': 'event_roy.jpeg',
   '유주연': 'event_jooyeon.jpeg',
+  '이현준': 'event_hyunjun.jpeg',
   // Marketing Team
   '추승연': 'marketing_seungyeon.jpg',
   '안소현': 'marketing_sohyun.png',
@@ -40,6 +41,7 @@ export const memberImages: Record<string, string> = {
   '이건희': 'tech_kunhee.jpg',
   '최동훈': 'tech_donghun.jpeg',
   '고건': 'tech_james.jpeg',
+  '전재영': 'tech_kevin.jpeg',
   // PR Team
   '박시원': 'pr_siwon.jpeg',
   '김관식': 'pr_kwansik.jpeg',
