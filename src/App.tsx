@@ -3,7 +3,6 @@ import { AppProvider, useLanguage, useTheme } from './contexts/AppContext';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { ThemeToggle } from './components/ThemeToggle';
-import { CursorMascot } from './components/CursorMascot';
 
 // Lazy load pages for code splitting
 const HomePage = lazy(() => import('./pages/HomePage').then(m => ({ default: m.HomePage })));
@@ -56,7 +55,6 @@ function AppContent() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-[#0a0a0a] transition-colors">
-      <CursorMascot />
       <Header language={language} onLanguageToggle={toggleLanguage} />
       <main>
         <Suspense fallback={<PageLoading />}>
