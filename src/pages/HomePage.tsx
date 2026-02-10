@@ -16,8 +16,8 @@ export function HomePage({ language }: HomePageProps) {
       joinButton: '멤버십 가입하기',
       eventsTitle: '주요 이벤트',
       events: [
-        { title: '발렌타인 데이 (2/13)', description: '위치: 미정 · 시간: 미정' },
-        { title: '삼일절 기념 (3/1)', description: '위치: CMH 67th floor · 시간: 미정' },
+        { title: '발렌타인 데이 빼빼로 판매 (2/13)', description: '위치: SLC · 시간: 오전 11시 - 오후 5시' },
+        { title: '삼일절 기념 (3/1)', description: '위치: 미정 · 시간: 미정' },
         { title: 'W26 EOT', description: '위치: 미정 · 시간: 미정 · 날짜: 미정' },
       ],
       newsTitle: '소식',
@@ -36,8 +36,8 @@ export function HomePage({ language }: HomePageProps) {
       joinButton: 'Join Membership',
       eventsTitle: 'Main Events',
       events: [
-        { title: 'Valentine\'s Day (2/13)', description: 'Location: TBD · Time: TBD' },
-        { title: 'March 1st Independence Day (3/1)', description: 'Location: CMH 67th floor · Time: TBD' },
+        { title: 'Valentine\'s Day Pepero Sale (2/13)', description: 'Location: SLC · Time: 11AM - 5PM' },
+        { title: 'March 1st Independence Day (3/1)', description: 'Location: TBD · Time: TBD' },
         { title: 'W26 EOT', description: 'Location: TBD · Time: TBD · Date: TBD' },
       ],
       newsTitle: 'News',
