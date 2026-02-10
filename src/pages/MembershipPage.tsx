@@ -175,7 +175,7 @@ export function MembershipPage({ language }: MembershipPageProps) {
               </div>
 
               <motion.a
-                href="https://example.com/membership-signup"
+                href="https://forms.gle/XxWFo6NRTjjG3HHN7"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}

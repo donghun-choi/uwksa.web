@@ -29,6 +29,7 @@ export const memberImages: Record<string, string> = {
   '정인하': 'event_roy.jpeg',
   '유주연': 'event_jooyeon.jpeg',
   '이현준': 'event_hyunjun.jpeg',
+  '권혁준': 'event_hyukjun.jpeg',
   // Marketing Team
   '추승연': 'marketing_seungyeon.jpg',
   '안소현': 'marketing_sohyun.png',
@@ -37,11 +38,14 @@ export const memberImages: Record<string, string> = {
   '김지헌': 'marketing_jihun.jpeg',
   '김미가': 'marketing_miga.jpeg',
   '최정미': 'marketing_rayna.jpeg',
+  '신동호': 'marketing_caleb.jpeg',
+  'Hunter Kim': 'marketing_hunter.jpeg',
   // Tech Team
   '이건희': 'tech_kunhee.jpg',
   '최동훈': 'tech_donghun.jpeg',
   '고건': 'tech_james.jpeg',
   '전재영': 'tech_kevin.jpeg',
+  '이종빈': 'tech_jongbin.jpeg',
   // PR Team
   '박시원': 'pr_siwon.jpeg',
   '김관식': 'pr_kwansik.jpeg',
@@ -57,7 +61,6 @@ export const memberEnglishNames: Record<string, string> = {
   '안소현': 'Sohyun An',
   '유주연': 'Jooyeon Yoo',
   '이현준': 'Jun Lee',
-  '김나영': 'Chloe Kim',
   '김지율': 'Jack Kim',
   '김태윤': 'Taeyun Kim',
   '정인하': 'Roy Chong',
@@ -108,7 +111,6 @@ export const teams: Team[] = [
       { name: '정인하', role: 'Member' },
       { name: '권혁준', role: 'Member' },
       { name: '장호준', role: 'Member' },
-      { name: '김나영', role: 'Member' },
     ],
   },
   {
