@@ -14,18 +14,18 @@ export function EventsPage({ language }: EventsPageProps) {
       events: [
         {
           date: '2/13',
-          title: '발렌타인 데이',
-          location: '미정',
-          time: '미정',
-          description: '발렌타인 데이 이벤트',
+          title: '발렌타인 데이 빼빼로 판매',
+          location: 'SLC',
+          time: '오전 11시 - 오후 5시',
+          description: '발렌타인 데이 빼빼로 판매 이벤트',
           color: 'from-pink-500/20 to-pink-600/10',
         },
         {
           date: '3/1',
           title: '삼일절 기념',
-          location: 'CMH 67th floor',
+          location: '미정',
           time: '미정',
-          description: '시원이형 태극기 들고 삼일절 기념 링로드 러닝',
+          description: '미정',
           color: 'from-blue-500/20 to-blue-600/10',
         },
         {
@@ -45,18 +45,18 @@ export function EventsPage({ language }: EventsPageProps) {
       events: [
         {
           date: '2/13',
-          title: 'Valentine\'s Day',
-          location: 'TBD',
-          time: 'TBD',
-          description: 'Valentine\'s Day event',
+          title: 'Valentine\'s Day Pepero Sale',
+          location: 'SLC',
+          time: '11AM - 5PM',
+          description: 'Valentine\'s Day Pepero sale event',
           color: 'from-pink-500/20 to-pink-600/10',
         },
         {
           date: '3/1',
           title: 'March 1st Independence Day',
-          location: 'CMH 67th floor',
+          location: 'TBD',
           time: 'TBD',
-          description: 'Celebrating Korean Independence Day',
+          description: 'TBD',
           color: 'from-blue-500/20 to-blue-600/10',
         },
         {
