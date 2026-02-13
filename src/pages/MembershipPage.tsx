@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { Check, Star, ExternalLink, MapPin } from 'lucide-react';
-import mascotWave from 'figma:asset/2f7119d4264719c8469dedaf506e913cc3affe24.png';
+import mascotWave from '../assets/favicon.png';
 
 interface MembershipPageProps {
   language: 'en' | 'ko';
